@@ -1,0 +1,29 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /opt/codedeploy/cf-app
+
+permissions:
+  - object: /opt/codedeploy/cf-app
+    pattern: "**"
+    owner: cf_svc
+    group: cf_svc
+    mode: 755
+    type:
+      - file
+      - directory
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before-install.sh
+      timeout: 300
+
+  AfterInstall:
+    - location: scripts/deploy-release.sh
+      timeout: 300
+
+  ApplicationStart:
+    - location: scripts/restart-coldfusion.sh
+      timeout: 300
