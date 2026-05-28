@@ -18,7 +18,7 @@ rsync -a --delete --exclude 'appspec.yml' --exclude 'scripts/' "${CODEDEPLOY_STA
 
 chown -R cf_svc:cf_svc "${NEW_RELEASE}"
 
-ln -sfn "${NEW_RELEASE}" "${DIRECT_LINK}"
+ln -s "${NEW_RELEASE}" "${DIRECT_LINK}"
 
 chown -h cf_svc:cf_svc "${DIRECT_LINK}"
 
