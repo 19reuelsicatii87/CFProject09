@@ -20,7 +20,6 @@ phases:
   pre_build:
     commands:
       - echo "=== Pre-build ==="
-      - test -f box.json
       - test -f appspec.yml
       - test -f scripts/before-install.sh
       - test -f scripts/deploy-release.sh
@@ -58,24 +57,19 @@ phases:
           --exclude 'scripts/' \
           ./ "${DEPLOY_BUNDLE_DIR}/"
       - cp appspec.yml "${DEPLOY_BUNDLE_DIR}/appspec.yml"
+      - cp index.cfm "${DEPLOY_BUNDLE_DIR}/index.cfm"
       - cp scripts/before-install.sh "${DEPLOY_BUNDLE_DIR}/scripts/before-install.sh"
       - cp scripts/deploy-release.sh "${DEPLOY_BUNDLE_DIR}/scripts/deploy-release.sh"
       - cp scripts/restart-coldfusion.sh "${DEPLOY_BUNDLE_DIR}/scripts/restart-coldfusion.sh"
-      - cp "${DEPLOY_BUNDLE_DIR}/public/index.bxm" "${DEPLOY_BUNDLE_DIR}/index.bxm"
-      - cp "${DEPLOY_BUNDLE_DIR}/public/Application.bx" "${DEPLOY_BUNDLE_DIR}/Application.bx"
-      - test -f "${DEPLOY_BUNDLE_DIR}/public/robots.txt" && cp "${DEPLOY_BUNDLE_DIR}/public/robots.txt" "${DEPLOY_BUNDLE_DIR}/robots.txt" || true
       - chmod +x "${DEPLOY_BUNDLE_DIR}/scripts/before-install.sh"
       - chmod +x "${DEPLOY_BUNDLE_DIR}/scripts/deploy-release.sh"
       - chmod +x "${DEPLOY_BUNDLE_DIR}/scripts/restart-coldfusion.sh"
       - test -f "${DEPLOY_BUNDLE_DIR}/appspec.yml"
+      - test -f "${DEPLOY_BUNDLE_DIR}/index.cfm"
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/before-install.sh"
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/deploy-release.sh"
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/restart-coldfusion.sh"
-      - test -f "${DEPLOY_BUNDLE_DIR}/index.bxm"
-      - test -f "${DEPLOY_BUNDLE_DIR}/Application.bx"
-      - test -d "${DEPLOY_BUNDLE_DIR}/lib/coldbox"
-      - test -d "${DEPLOY_BUNDLE_DIR}/app"
-      - test -f "${DEPLOY_BUNDLE_DIR}/runtime/boxlang.json"
+
 
   post_build:
     commands:
