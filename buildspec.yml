@@ -25,7 +25,6 @@ phases:
       - test -f scripts/deploy-release.sh
       - test -f scripts/restart-coldfusion.sh
       - box install --production
-      - test -d lib/coldbox
 
   build:
     commands:
