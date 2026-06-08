@@ -21,6 +21,7 @@ phases:
     commands:
       - echo "=== Pre-build ==="
       - test -f appspec.yml
+      - test -f index.cfm
       - test -f scripts/before-install.sh
       - test -f scripts/deploy-release.sh
       - test -f scripts/restart-coldfusion.sh
@@ -53,6 +54,7 @@ phases:
           --exclude '.vscode/' \
           --exclude "${DEPLOY_BUNDLE_DIR}/" \
           --exclude 'appspec.yml' \
+          --exclude 'index.cfm' \
           --exclude 'scripts/' \
           ./ "${DEPLOY_BUNDLE_DIR}/"
       - cp appspec.yml "${DEPLOY_BUNDLE_DIR}/appspec.yml"
@@ -68,7 +70,6 @@ phases:
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/before-install.sh"
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/deploy-release.sh"
       - test -f "${DEPLOY_BUNDLE_DIR}/scripts/restart-coldfusion.sh"
-
 
   post_build:
     commands:
