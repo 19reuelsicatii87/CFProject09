@@ -61,7 +61,8 @@
             <h2>Welcome to my simple page</h2>
             <div>
                 <p style="margin: 0;">This is the main content area.</p>
-                <p style="margin: 0;">Version 26.6.18 - 0956 - Autoscaling Group Deployment</p>
+                <p style="margin: 0;">Version 26.6.28 - 1158</p>
+                <p style="margin: 0;">Deployment - ASG - In Place - Blue/Green</p>
             </div>
         </div>
         <div class="card">
@@ -79,7 +80,7 @@
                 return;
             }
 
-            message.innerText = "🎉🎉🎉 Version 26.6.18 - 0956 - Autoscaling Group Deployment 🎉🎉🎉";
+            message.innerText = "🎉🎉🎉 Deployment - ASG - In Place - Blue/Green 🎉🎉🎉";
         }
     </script>
 
